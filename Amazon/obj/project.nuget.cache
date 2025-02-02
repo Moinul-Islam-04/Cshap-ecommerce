@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "tsIdomxbBZk=",
+  "success": true,
+  "projectFilePath": "/Users/moislam/Desktop/Cshap-ecommerce/Amazon/Amazon.csproj",
+  "expectedPackageFiles": [
+    "/Users/moislam/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "/Users/moislam/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
