@@ -1,41 +1,64 @@
-var builder = WebApplication.CreateBuilder(args);
+using System;
+using System.Xml.Serialization;
+using Microsoft.AspNetCore.Components.Forms;
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace Amazon
 {
-    app.MapOpenApi();
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            Console.WriteLine("C. Create new inventory item");
+            Console.WriteLine("R. Read inventory item");
+            Console.WriteLine("U. Update inventory item");
+            Console.WriteLine("D. Delete inventory item");
+            Console.WriteLine("Q. Quit");
+            char choice;
+            List<string?> list = new List<string?>();
+            do
+            {
+                string? input = Console.ReadLine().ToUpper();
+                choice = input[0];
+                switch (choice)
+                {
+                case 'C':
+                    var newproduct = Console.ReadLine();
+                    break;
+                case 'R':
+                    Console.WriteLine("Read inventory item");
+                    break;
+                case 'U':
+                    Console.WriteLine("Update inventory item");
+                    break;
+                case 'D':
+                    Console.WriteLine("Delete inventory item");
+                    break;
+                case 'Q':
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+                }
+            } while (choice != 'Q' && choice != 'q');
+            Console.ReadLine();
+
+        }
+
+    static void Createproduct(List<string?> list)
+    {
+        
+    }
+
+
+
+    }
+
+
+
 }
 
-app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
-app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
